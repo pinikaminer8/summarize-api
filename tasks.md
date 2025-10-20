@@ -38,10 +38,10 @@ This document outlines the essential tasks required to build the Minimum Viable 
 - [x] Validate output matches response schema 100%
 
 ### 6. Create Express API Endpoint
-- [ ] Set up Express server with TypeScript
-- [ ] Create POST endpoint for text summarization
-- [ ] Add middleware (CORS, Helmet, body-parser, rate limiting)
-- [ ] Implement request/response logging with Winston/Morgan
+- [x] Set up Express server with TypeScript
+- [x] Create POST endpoint for text summarization
+- [x] Add middleware (CORS, Helmet, body-parser, rate limiting)
+- [x] Implement request/response logging with Winston/Morgan
 
 ### 7. Error Handling & Logging
 - [ ] Implement centralized error handling middleware
