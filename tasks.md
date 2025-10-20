@@ -44,10 +44,10 @@ This document outlines the essential tasks required to build the Minimum Viable 
 - [x] Implement request/response logging with Winston/Morgan
 
 ### 7. Error Handling & Logging
-- [ ] Implement centralized error handling middleware
-- [ ] Add structured logging for requests, responses, and errors
-- [ ] Define error codes for different failure scenarios
-- [ ] Add request timeout handling (≤5s latency requirement)
+- [x] Implement centralized error handling middleware
+- [x] Add structured logging for requests, responses, and errors
+- [x] Define error codes for different failure scenarios
+- [x] Add request timeout handling (≤5s latency requirement)
 
 ### 8. Test & Validate
 - [ ] Manual testing with various text inputs

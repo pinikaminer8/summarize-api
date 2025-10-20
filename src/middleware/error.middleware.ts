@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { ErrorResponse } from '../types/api.types';
 import { HTTP_STATUS, ERROR_CODES, ERROR_MESSAGES } from '../constants';
+import { trackError } from '../utils/error-tracker.utils';
+import { logError } from '../utils/logger.utils';
 
 /**
  * Custom Application Error Class
@@ -29,15 +31,20 @@ export function errorHandler(
   _next: NextFunction
 ): void {
   // Log error for debugging
-  console.error('Error:', {
-    message: err.message,
-    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+  logError(err, {
     path: req.path,
     method: req.method,
+    body: req.body,
   });
 
   // Handle known application errors
   if (err instanceof AppError) {
+    // Track the error
+    trackError(err.code, err.message, {
+      statusCode: err.statusCode,
+      path: req.path,
+    });
+
     const errorResponse: ErrorResponse = {
       success: false,
       error: {
@@ -52,6 +59,11 @@ export function errorHandler(
   }
 
   // Handle unexpected errors
+  trackError(ERROR_CODES.INTERNAL_ERROR, err.message, {
+    path: req.path,
+    stack: err.stack,
+  });
+
   const errorResponse: ErrorResponse = {
     success: false,
     error: {
