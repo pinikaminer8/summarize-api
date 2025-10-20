@@ -1,0 +1,256 @@
+{
+  "info": {
+    "name": "AI Summarization Proxy API",
+    "description": "API for generating text summaries with title, keywords, and sentiment analysis using AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "summarize-api"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API server is running and healthy"
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"status\": \"ok\",\n  \"timestamp\": \"2025-10-20T12:00:00.000Z\",\n  \"uptime\": 123.456\n}"
+        }
+      ]
+    },
+    {
+      "name": "Summarize Text - Short Article",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Artificial intelligence is transforming technology. Machine learning enables computers to learn from data and improve over time without being explicitly programmed. This revolution is changing industries worldwide.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/summarize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Generate summary for a short article about AI"
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Artificial intelligence is transforming technology. Machine learning enables computers to learn from data and improve over time without being explicitly programmed. This revolution is changing industries worldwide.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/summarize",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"title\": \"AI and Machine Learning Transform Technology\",\n    \"summary\": \"Artificial intelligence and machine learning are revolutionizing technology by enabling computers to learn from data and improve autonomously, impacting industries globally.\",\n    \"keywords\": [\"artificial intelligence\", \"machine learning\", \"technology\", \"data\"],\n    \"sentiment\": \"positive\"\n  },\n  \"metadata\": {\n    \"processingTimeMs\": 2341,\n    \"inputLength\": 198,\n    \"model\": \"facebook/bart-large-cnn\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Summarize Text - Medium Article",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Climate change is one of the most pressing challenges facing humanity today. Rising global temperatures are causing sea levels to rise, extreme weather events to become more frequent, and ecosystems to be disrupted. Scientists warn that without immediate action to reduce greenhouse gas emissions, the consequences could be catastrophic. Governments, businesses, and individuals all have a role to play in addressing this crisis through sustainable practices, renewable energy adoption, and policy changes. The transition to a low-carbon economy presents both challenges and opportunities for innovation and economic growth.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/summarize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Generate summary for a medium-length article about climate change"
+      },
+      "response": []
+    },
+    {
+      "name": "Error - Empty Text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/summarize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Test error handling for empty text input"
+      },
+      "response": [
+        {
+          "name": "Validation Error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/summarize",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Request validation failed\",\n    \"details\": {\n      \"field\": \"text\",\n      \"issue\": \"Text cannot be empty or whitespace only\"\n    }\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Error - Text Too Short",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Short\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/summarize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Test error handling for text that is too short (< 10 characters)"
+      },
+      "response": []
+    },
+    {
+      "name": "Error - Missing Text Field",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/summarize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Test error handling when text field is missing"
+      },
+      "response": []
+    },
+    {
+      "name": "Error - Text Too Long",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"{{longText}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/summarize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Test error handling for text exceeding 10,000 characters. Set {{longText}} variable to a string > 10,000 chars."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

@@ -11,7 +11,8 @@
     "format": "prettier --write src/**/*.ts",
     "type-check": "tsc --noEmit",
     "test:huggingface": "tsx src/scripts/test-huggingface.ts",
-    "test:summarization": "tsx src/scripts/test-summarization.ts"
+    "test:summarization": "tsx src/scripts/test-summarization.ts",
+    "test:manual": "tsx src/scripts/test-manual.ts"
   },
   "repository": {
     "type": "git",
