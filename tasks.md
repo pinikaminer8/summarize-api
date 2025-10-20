@@ -26,10 +26,10 @@ This document outlines the essential tasks required to build the Minimum Viable 
 - [x] Return appropriate error messages and status codes
 
 ### 4. Integrate Hugging Face API
-- [ ] Configure Hugging Face API client with token
-- [ ] Select and test appropriate summarization model (e.g., `facebook/bart-large-cnn`)
-- [ ] Create service layer for LLM interaction
-- [ ] Handle API errors and timeouts
+- [x] Configure Hugging Face API client with token
+- [x] Select and test appropriate summarization model (e.g., `facebook/bart-large-cnn`)
+- [x] Create service layer for LLM interaction
+- [x] Handle API errors and timeouts
 
 ### 5. Build Summarization Logic
 - [ ] Design and test LLM prompt for extracting: title, summary, keywords, sentiment
