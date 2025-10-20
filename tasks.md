@@ -20,10 +20,10 @@ This document outlines the essential tasks required to build the Minimum Viable 
 - [x] Document HTTP status codes and error responses
 
 ### 3. Implement Request Validation
-- [ ] Set up Zod schemas for input validation
-- [ ] Validate text input (required, max length ~10k tokens)
-- [ ] Implement error handling for invalid requests
-- [ ] Return appropriate error messages and status codes
+- [x] Set up Zod schemas for input validation
+- [x] Validate text input (required, max length ~10k tokens)
+- [x] Implement error handling for invalid requests
+- [x] Return appropriate error messages and status codes
 
 ### 4. Integrate Hugging Face API
 - [ ] Configure Hugging Face API client with token
