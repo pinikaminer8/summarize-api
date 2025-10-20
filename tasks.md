@@ -14,10 +14,10 @@ This document outlines the essential tasks required to build the Minimum Viable 
 - [x] Set up ESLint and Prettier for code quality
 
 ### 2. Define API Contract
-- [ ] Define API endpoint URL structure (e.g., `POST /api/summarize`)
-- [ ] Create TypeScript interfaces for Request schema (text input)
-- [ ] Create TypeScript interfaces for Response schema (title, summary, keywords, sentiment)
-- [ ] Document HTTP status codes and error responses
+- [x] Define API endpoint URL structure (e.g., `POST /api/summarize`)
+- [x] Create TypeScript interfaces for Request schema (text input)
+- [x] Create TypeScript interfaces for Response schema (title, summary, keywords, sentiment)
+- [x] Document HTTP status codes and error responses
 
 ### 3. Implement Request Validation
 - [ ] Set up Zod schemas for input validation
