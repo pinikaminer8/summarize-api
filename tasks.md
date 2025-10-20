@@ -32,10 +32,10 @@ This document outlines the essential tasks required to build the Minimum Viable 
 - [x] Handle API errors and timeouts
 
 ### 5. Build Summarization Logic
-- [ ] Design and test LLM prompt for extracting: title, summary, keywords, sentiment
-- [ ] Parse and structure LLM response into JSON format
-- [ ] Implement fallback logic for incomplete responses
-- [ ] Validate output matches response schema 100%
+- [x] Design and test LLM prompt for extracting: title, summary, keywords, sentiment
+- [x] Parse and structure LLM response into JSON format
+- [x] Implement fallback logic for incomplete responses
+- [x] Validate output matches response schema 100%
 
 ### 6. Create Express API Endpoint
 - [ ] Set up Express server with TypeScript

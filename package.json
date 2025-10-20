@@ -10,7 +10,8 @@
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "type-check": "tsc --noEmit",
-    "test:huggingface": "tsx src/scripts/test-huggingface.ts"
+    "test:huggingface": "tsx src/scripts/test-huggingface.ts",
+    "test:summarization": "tsx src/scripts/test-summarization.ts"
   },
   "repository": {
     "type": "git",
