@@ -39,7 +39,6 @@ It’s intentionally tool-agnostic and focuses on thinking, scoping, and evaluat
    2. ### Define The tech stack
       - [ ] HTTP server.
       - [ ] LLM.
-      - [ ] Use Docker.
   
    3. ### Test the API
       - [ ] Generate a Postman JSON file to test the API.
